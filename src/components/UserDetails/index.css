@@ -1,0 +1,31 @@
+.steps-container {
+  background-color: #304766;
+  height: 480px;
+  width: 1035px;
+  margin: 0px;
+  display: flex;
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  flex-direction: row;
+}
+.ul-container {
+  width: 268px;
+  height: 100%;
+  margin: 0px;
+  background-color: #ffffff;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-left: 48px;
+}
+.User-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+}

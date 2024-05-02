@@ -1,0 +1,48 @@
+.Home-container {
+  display: flex;
+  flex-direction: row;
+}
+.content-container {
+  display: flex;
+  flex-direction: column;
+  margin-left: 60px;
+  margin-top: 70px;
+}
+.home-heading {
+  color: #304766;
+  font-family: 'Inter';
+  font-weight: 600;
+  font-size: 56px;
+  margin: 0px;
+  line-height: 72px;
+  letter-spacing: 0.1px;
+  width: 413px;
+}
+.para {
+  color: #304766;
+  font-family: 'Inter';
+  font-weight: 400;
+  width: 526px;
+  font-size: 20px;
+  line-height: 37px;
+  letter-spacing: 0.1px;
+}
+.book-btn {
+  background-color: #304766;
+  width: 175px;
+  border-radius: 8px;
+  height: 48px;
+  padding: 12px;
+  gap: 8px;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.travel-image {
+  height: 550px;
+  width: 550px;
+}

@@ -1,0 +1,25 @@
+.list-item {
+  list-style-type: none;
+}
+.Detail-Btn {
+  font-family: 'Inter';
+  color: #334155;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  border: 0 none;
+  padding: 20px;
+  cursor: pointer;
+}
+.active-tab-btn {
+  font-family: 'Inter';
+  cursor: pointer;
+  color: #2563eb;
+  background-color: transparent;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  border: 0 none;
+  padding: 20px;
+}

@@ -1,0 +1,46 @@
+.header-container {
+  background-color: #304766;
+  height: 93px;
+  width: 1366px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.header-heading {
+  color: #ffffff;
+  font-family: 'Caveat';
+  font-size: 32px;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: 0.1px;
+  font-weight: 700;
+}
+.Routes-container {
+  display: flex;
+  flex-direction: row;
+}
+.heading1 {
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  margin-left: 30px;
+  color: #ffffff;
+}
+.logout-btn {
+  width: 103px;
+  height: 48px;
+  border-radius: 8px;
+  color: #304766;
+  font-family: 'Inter';
+  font-size: 16px;
+  cursor: pointer;
+  gap: 8px;
+  background-color: #ffffff;
+}
+.link-item {
+  text-decoration: none;
+}
