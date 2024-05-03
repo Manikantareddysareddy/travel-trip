@@ -23,3 +23,12 @@
   border: 0 none;
   padding: 20px;
 }
+.new-image {
+  height: 32px;
+  width: 32px;
+  align-self: center;
+}
+.usercard {
+  display: flex;
+  flex-direction: row;
+}

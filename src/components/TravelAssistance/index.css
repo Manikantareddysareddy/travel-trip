@@ -1,0 +1,18 @@
+.Travel-heading {
+  color: #334155;
+  font-family: 'Roboto';
+  font-weight: 500;
+  font-size: 14px;
+}
+.selectEl {
+  height: 38px;
+  width: 310px;
+  border: 1px #cbd5e1 solid;
+  border-radius: 8px;
+  padding: 10px;
+}
+.Travel-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
