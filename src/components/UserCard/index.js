@@ -49,13 +49,13 @@ const UserCard = props => {
     <li className="list-item">
       <div className="usercard">
         <img src={`${imageUrl}`} alt="image1" className="new-image" />
-        <button
+        <p
           type="button"
           className={`Detail-Btn ${activeTabBtnClassName}`}
           onClick={changeToStep}
         >
           {displayText}
-        </button>
+        </p>
       </div>
     </li>
   )

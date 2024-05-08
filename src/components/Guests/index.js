@@ -48,7 +48,7 @@ const Guests = props => {
   }
 
   return (
-    <div className="user-details-container">
+    <form className="user-details-container">
       <h1 className="details-heading">Guests</h1>
       <p className="details-para">Select your Guests</p>
       <div className="User-form-container">
@@ -128,7 +128,7 @@ const Guests = props => {
           </button>
         </div>
       </div>
-    </div>
+    </form>
   )
 }
 

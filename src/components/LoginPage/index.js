@@ -112,13 +112,13 @@ class LoginPage extends Component {
                   {showPassword === false ? (
                     <img
                       src="https://res.cloudinary.com/dg3csk2jz/image/upload/v1714570799/eye_eye_tywu0d.png"
-                      alt="eye"
+                      alt="show-password"
                       className="image"
                     />
                   ) : (
                     <img
                       src=" https://res.cloudinary.com/dg3csk2jz/image/upload/v1714574988/eye-slasheye-slash_yh2eq0.png"
-                      alt="eye"
+                      alt="show-password"
                       className="image"
                     />
                   )}

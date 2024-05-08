@@ -1,0 +1,47 @@
+.Trip-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 1042px;
+  height: 140px;
+  border: 1px #304766 solid;
+  border-radius: 16px;
+}
+.Trip-heading {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 24px;
+  line-height: 0.1px;
+  font-weight: 600;
+}
+.Trip-Date-container {
+  display: flex;
+  flex-direction: column;
+}
+.Trip-para {
+  color: #334155;
+  font-family: 'Roboto';
+  font-size: 14px;
+  line-height: 0.1px;
+  font-weight: 300;
+}
+.Trip-Date-heading {
+  color: #0f0f0f;
+  font-family: 'Roboto';
+  font-size: 24px;
+  line-height: 0.1px;
+  font-weight: 400;
+}
+.Trip-btn {
+  color: #2563eb;
+  border: 1px #2563eb solid;
+  background-color: #ffffff;
+  font-family: 'Roboto';
+  font-size: 24px;
+  line-height: 0.1px;
+  border-radius: 6px;
+  padding: 6px;
+  font-weight: 400;
+  width: 64px;
+  height: 28px;
+}

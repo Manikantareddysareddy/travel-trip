@@ -8,7 +8,11 @@ import HomePage from './components/HomePage'
 
 import UserDetails from './components/UserDetails'
 
+import MyTrips from './components/MyTrips'
+
 import ProtectedRoute from './components/ProtectedRoute'
+
+import NotFound from './components/NotFound'
 
 import './App.css'
 
@@ -21,6 +25,9 @@ class App extends Component {
         <Route exact path="/login" component={LoginPage} />
         <ProtectedRoute exact path="/" component={HomePage} />
         <ProtectedRoute exact path="/book-a-new-trip" component={UserDetails} />
+        <ProtectedRoute exact path="/my-trips" component={MyTrips} />
+        <Route path="/not-found" component={NotFound} />
+        <Redirect to="not-found" />
       </Switch>
     )
   }

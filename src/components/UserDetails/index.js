@@ -1,5 +1,9 @@
 import {Component} from 'react'
 
+import {v4 as uuidv4} from 'uuid'
+
+import {Link} from 'react-router-dom'
+
 import Header from '../Header'
 
 import UserCard from '../UserCard'
@@ -7,6 +11,8 @@ import UserCard from '../UserCard'
 import Guests from '../Guests'
 
 import TravelAssistance from '../TravelAssistance'
+
+import MyTrips from '../MyTrips'
 
 import './index.css'
 
@@ -46,6 +52,7 @@ class UserDetails extends Component {
     InfantCount: 0,
     isChecked: false,
     travelValue: travelAssistanceList[0].value,
+    myTripsList: [],
   }
 
   IncreaseAdultCount = () => {
@@ -349,7 +356,7 @@ class UserDetails extends Component {
             {StartDateError === false ? (
               <div className="Details-input1">
                 <input
-                  type="text"
+                  type="date"
                   id="startDate"
                   className="date-input"
                   onBlur={this.onStartDateType}
@@ -366,7 +373,7 @@ class UserDetails extends Component {
             ) : (
               <div className="Details-input1">
                 <input
-                  type="text"
+                  type="date"
                   id="startDate"
                   className="date-input"
                   onBlur={this.onStartDateType}
@@ -394,7 +401,7 @@ class UserDetails extends Component {
             {EndDateError === false ? (
               <div className="Details-input1">
                 <input
-                  type="text"
+                  type="date"
                   id="startDate"
                   className="date-input"
                   onBlur={this.onEndDateType}
@@ -411,7 +418,7 @@ class UserDetails extends Component {
             ) : (
               <div className="Details-input1">
                 <input
-                  type="text"
+                  type="date"
                   id="startDate"
                   className="date-input"
                   onBlur={this.onEndDateType}
@@ -519,8 +526,8 @@ class UserDetails extends Component {
     )
   }
 
-  ProceedToConfirm = () => {
-    const {formSubmitted, IsActive} = this.state
+  ProceedToConfirm = event => {
+    const {formSubmitted} = this.state
     this.setState({formSubmitted: !formSubmitted, IsActive: ''})
   }
 
@@ -541,30 +548,30 @@ class UserDetails extends Component {
         <h1 className="details-heading">Confirmation</h1>
         <p className="details-para">Confirm your details</p>
         <div className="User-form-container">
-          <h1 className="confirmation-heading">
+          <p className="confirmation-heading">
             Name : <span className="spanEl">{NameInput}</span>
-          </h1>
-          <h1 className="confirmation-heading">
+          </p>
+          <p className="confirmation-heading">
             Start Location: <span className="spanEl">{startLocation} </span>
-          </h1>
-          <h1 className="confirmation-heading">
+          </p>
+          <p className="confirmation-heading">
             end Location: <span className="spanEl">{endLocation}</span>
-          </h1>
-          <h1 className="confirmation-heading">
+          </p>
+          <p className="confirmation-heading">
             Start Date: <span className="spanEl">{StartDate}</span>
-          </h1>
-          <h1 className="confirmation-heading">
+          </p>
+          <p className="confirmation-heading">
             End Date: <span className="spanEl">{EndDate} </span>
-          </h1>
-          <h1 className="confirmation-heading">
+          </p>
+          <p className="confirmation-heading">
             Guests:{' '}
             <span className="spanEl">
               {AdultCount + ChildrenCount + InfantCount}{' '}
             </span>
-          </h1>
-          <h1 className="confirmation-heading">
+          </p>
+          <p className="confirmation-heading">
             Travel Assistance: <span className="spanEl">{travelValue}</span>
-          </h1>
+          </p>
           <div className="btn-container">
             <button
               type="submit"
@@ -574,13 +581,77 @@ class UserDetails extends Component {
               Previous
             </button>
             <button
-              type="submit"
+              type="button"
               className="Nxt-btn"
               onClick={this.ProceedToConfirm}
             >
               Confirm
             </button>
           </div>
+        </div>
+      </div>
+    )
+  }
+
+  makeANewTrip = () => {
+    const {
+      IsActive,
+      NameError,
+      startLocationError,
+      endLocationError,
+      NameInput,
+      startLocation,
+      endLocation,
+      StartDate,
+      EndDate,
+      formSubmitted,
+      StartDateError,
+      EndDateError,
+      AdultCount,
+      ChildrenCount,
+      InfantCount,
+      isChecked,
+    } = this.state
+    this.setState({
+      IsActive: stepsList[0].stepId,
+      NameError: false,
+      startLocationError: false,
+      endLocationError: false,
+      NameInput: '',
+      startLocation: '',
+      endLocation: '',
+      StartDate: '',
+      EndDate: '',
+      formSubmitted: false,
+      StartDateError: false,
+      EndDateError: false,
+      AdultCount: 0,
+      ChildrenCount: 0,
+      InfantCount: 0,
+      isChecked: false,
+    })
+  }
+
+  renderNewTrip = () => {
+    const {NameInput} = this.state
+    return (
+      <div className="user-details-container">
+        <div className="User-form-container">
+          <img
+            src="https://assets.ccbp.in/frontend/react-js/travel-trip-steps-successfully-completed-img.png"
+            alt="successfully-complete"
+          />
+          <h1 className="details-heading1">Awesome!</h1>
+          <p className="details-para1">Your booking has been confirmed.</p>
+          <Link to="/book-a-new-trip">
+            <button
+              type="button"
+              className="Nxt-btn1"
+              onClick={this.makeANewTrip()}
+            >
+              Book a New Trip
+            </button>
+          </Link>
         </div>
       </div>
     )
@@ -594,6 +665,7 @@ class UserDetails extends Component {
       ChildrenCount,
       InfantCount,
       formSubmitted,
+      myTripsList,
     } = this.state
 
     return (
@@ -638,7 +710,7 @@ class UserDetails extends Component {
             {IsActive === NewStepList[4].stepId
               ? this.renderConfirmation()
               : ''}
-            {formSubmitted === true ? <h1>Make a new trip</h1> : ''}
+            {formSubmitted === true ? this.renderNewTrip() : ''}
           </div>
         </div>
       </div>
