@@ -4,6 +4,8 @@ import {v4 as uuidv4} from 'uuid'
 
 import {Link} from 'react-router-dom'
 
+import TripsContext from '../../context/TripsContext'
+
 import Header from '../Header'
 
 import UserCard from '../UserCard'
@@ -47,7 +49,7 @@ class UserDetails extends Component {
     formSubmitted: false,
     StartDateError: false,
     EndDateError: false,
-    AdultCount: 0,
+    AdultCount: 1,
     ChildrenCount: 0,
     InfantCount: 0,
     isChecked: false,
@@ -325,7 +327,6 @@ class UserDetails extends Component {
     const {StartDate, StartDateError} = this.state
 
     if (StartDate === ' ') {
-      console.log('Hello')
       this.setState({StartDateError: true})
     } else {
       console.log('Hi')
@@ -496,7 +497,7 @@ class UserDetails extends Component {
                 {NewtravelAssistanceList.map(eachVehicle => (
                   <TravelAssistance
                     Item={eachVehicle}
-                    key={eachVehicle.value}
+                    key={eachVehicle.displayText}
                     travelValue={travelValue}
                   />
                 ))}
@@ -593,43 +594,17 @@ class UserDetails extends Component {
     )
   }
 
-  makeANewTrip = () => {
-    const {
-      IsActive,
-      NameError,
-      startLocationError,
-      endLocationError,
-      NameInput,
-      startLocation,
-      endLocation,
-      StartDate,
-      EndDate,
-      formSubmitted,
-      StartDateError,
-      EndDateError,
-      AdultCount,
-      ChildrenCount,
-      InfantCount,
-      isChecked,
-    } = this.state
-    this.setState({
-      IsActive: stepsList[0].stepId,
-      NameError: false,
-      startLocationError: false,
-      endLocationError: false,
-      NameInput: '',
-      startLocation: '',
-      endLocation: '',
-      StartDate: '',
-      EndDate: '',
-      formSubmitted: false,
-      StartDateError: false,
-      EndDateError: false,
-      AdultCount: 0,
-      ChildrenCount: 0,
-      InfantCount: 0,
-      isChecked: false,
-    })
+  AddTrips = () => {
+    const {endLocation, StartDate, EndDate, myTripsList} = this.state
+    const NewTrip = {
+      id: uuidv4(),
+      Destination: endLocation,
+      startDate: StartDate,
+      endDate: EndDate,
+    }
+    this.setState(prevState => ({
+      mytripsList: [...prevState.myTripsList, NewTrip],
+    }))
   }
 
   renderNewTrip = () => {
@@ -644,11 +619,7 @@ class UserDetails extends Component {
           <h1 className="details-heading1">Awesome!</h1>
           <p className="details-para1">Your booking has been confirmed.</p>
           <Link to="/book-a-new-trip">
-            <button
-              type="button"
-              className="Nxt-btn1"
-              onClick={this.makeANewTrip()}
-            >
+            <button type="button" className="Nxt-btn1">
               Book a New Trip
             </button>
           </Link>
@@ -667,53 +638,58 @@ class UserDetails extends Component {
       formSubmitted,
       myTripsList,
     } = this.state
-
     return (
-      <div>
-        <Header />
-        <div className="User-container">
-          <div className="steps-container">
-            <div className="ul-container">
-              {NewStepList.map(eachItem => (
-                <UserCard
-                  Item={eachItem}
-                  key={eachItem.stepId}
-                  isActive={IsActive}
-                  ClickStepId={this.ClickStepId}
+      <TripsContext.Provider value={{myTripsList, AddTrips: this.AddTrips}}>
+        (
+        <div>
+          <Header />
+          <div className="User-container">
+            <div className="steps-container">
+              <div className="ul-container">
+                {NewStepList.map(eachItem => (
+                  <UserCard
+                    Item={eachItem}
+                    key={eachItem.stepId}
+                    isActive={IsActive}
+                    ClickStepId={this.ClickStepId}
+                  />
+                ))}
+              </div>
+              {IsActive === NewStepList[0].stepId
+                ? this.renderUserDetails()
+                : ''}
+              {IsActive === NewStepList[1].stepId
+                ? this.renderDataSelection()
+                : ''}
+              {IsActive === NewStepList[2].stepId ? (
+                <Guests
+                  AdultCount={AdultCount}
+                  ChildrenCount={ChildrenCount}
+                  InfantCount={InfantCount}
+                  IncreaseAdultCount={this.IncreaseAdultCount}
+                  DecreaseAdultCount={this.DecreaseAdultCount}
+                  IncreaseChildrenCount={this.IncreaseChildrenCount}
+                  DecreaseChildrenCount={this.DecreaseChildrenCount}
+                  IncreaseInfantCount={this.IncreaseInfantCount}
+                  DecreaseInfantCount={this.DecreaseInfantCount}
+                  EnterPrevious3={this.EnterPrevious3}
+                  ProceedToNext3={this.ProceedToNext3}
                 />
-              ))}
+              ) : (
+                ' '
+              )}
+              {IsActive === NewStepList[3].stepId
+                ? this.renderTravelAssistance()
+                : ''}
+              {IsActive === NewStepList[4].stepId
+                ? this.renderConfirmation()
+                : ''}
+              {formSubmitted === true ? this.renderNewTrip() : ''}
             </div>
-            {IsActive === NewStepList[0].stepId ? this.renderUserDetails() : ''}
-            {IsActive === NewStepList[1].stepId
-              ? this.renderDataSelection()
-              : ''}
-            {IsActive === NewStepList[2].stepId ? (
-              <Guests
-                AdultCount={AdultCount}
-                ChildrenCount={ChildrenCount}
-                InfantCount={InfantCount}
-                IncreaseAdultCount={this.IncreaseAdultCount}
-                DecreaseAdultCount={this.DecreaseAdultCount}
-                IncreaseChildrenCount={this.IncreaseChildrenCount}
-                DecreaseChildrenCount={this.DecreaseChildrenCount}
-                IncreaseInfantCount={this.IncreaseInfantCount}
-                DecreaseInfantCount={this.DecreaseInfantCount}
-                EnterPrevious3={this.EnterPrevious3}
-                ProceedToNext3={this.ProceedToNext3}
-              />
-            ) : (
-              ' '
-            )}
-            {IsActive === NewStepList[3].stepId
-              ? this.renderTravelAssistance()
-              : ''}
-            {IsActive === NewStepList[4].stepId
-              ? this.renderConfirmation()
-              : ''}
-            {formSubmitted === true ? this.renderNewTrip() : ''}
           </div>
         </div>
-      </div>
+        )
+      </TripsContext.Provider>
     )
   }
 }

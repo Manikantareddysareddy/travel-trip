@@ -2,14 +2,26 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   width: 1042px;
   height: 140px;
   border: 1px #304766 solid;
   border-radius: 16px;
+  padding: 20px;
+  margin-top: 20px;
+  margin-left: 100px;
 }
 .Trip-heading {
   color: #334155;
   font-family: 'Roboto';
+  font-size: 24px;
+  line-height: 0.1px;
+  font-weight: 600;
+}
+.Trip-heading1 {
+  color: #334155;
+  font-family: 'Roboto';
+  margin: 20px;
   font-size: 24px;
   line-height: 0.1px;
   font-weight: 600;
@@ -37,11 +49,48 @@
   border: 1px #2563eb solid;
   background-color: #ffffff;
   font-family: 'Roboto';
-  font-size: 24px;
+  font-size: 12px;
   line-height: 0.1px;
   border-radius: 6px;
   padding: 6px;
   font-weight: 400;
   width: 64px;
   height: 28px;
+}
+.NoTrip-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.NoTrips-image {
+  height: 68px;
+  width: 40px;
+}
+.NoTripsHeading {
+  font-family: 'Roboto';
+  font-weight: 500;
+  color: #334155;
+  font-size: 24px;
+}
+.NoTripsPara {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 15px;
+  color: #334155;
+}
+.NoTripBtn {
+  font-family: 'Roboto';
+  font-weight: 400;
+  font-size: 15px;
+  color: #ffffff;
+  width: 133px;
+  height: 32px;
+  background-color: #2563eb;
+  border-radius: 6px;
+  border: 0 none;
+}
+.link-item {
+  text-decoration: none;
 }

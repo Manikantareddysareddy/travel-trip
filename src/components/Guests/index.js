@@ -48,13 +48,13 @@ const Guests = props => {
   }
 
   return (
-    <form className="user-details-container">
+    <form className="user-details-container" onSubmit={onclickNext}>
       <h1 className="details-heading">Guests</h1>
       <p className="details-para">Select your Guests</p>
       <div className="User-form-container">
         <div className="main-adult-container">
           <div className="Adult-container">
-            <h1 className="adult-heading">Adults</h1>
+            <p className="adult-heading">Adults</p>
             <p className="adult-para">Age 13 or above</p>
           </div>
           <div className="count-container">
@@ -75,7 +75,7 @@ const Guests = props => {
         </div>
         <div className="main-adult-container">
           <div className="Adult-container">
-            <h1 className="adult-heading">Children</h1>
+            <p className="adult-heading">Children</p>
             <p className="adult-para">Age 2-12</p>
           </div>
           <div className="count-container">
@@ -96,7 +96,7 @@ const Guests = props => {
         </div>
         <div className="main-adult-container">
           <div className="Adult-container">
-            <h1 className="adult-heading">Infants</h1>
+            <p className="adult-heading">Infants</p>
             <p className="adult-para">Under 2</p>
           </div>
           <div className="count-container">
@@ -123,7 +123,7 @@ const Guests = props => {
           >
             Previous
           </button>
-          <button type="submit" className="Nxt-btn" onClick={onclickNext}>
+          <button type="submit" className="Nxt-btn">
             Next
           </button>
         </div>
